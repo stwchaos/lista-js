@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>29-03-2023</title>
+    <style>
+        *{
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color: rgb(0, 0, 0);
+}
+
+.container{
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(51, 255, 0);
+}
+
+.teclado>*:hover{
+    box-shadow: 0px 0px 10px 3px rgb(255, 255, 255);
+}
+
+.display{
+    border: 1px solid rgb(51, 99, 73);
+    height: 30pt;
+    display: flex;
+    width: 80vw;
+    justify-content: flex-end;
+    padding: 5px;
+}
+
+.input{
+    font-size: 30pt;
+}
+
+.teclado{
+    padding: 10px;
+    margin: 10px;
+    display: grid;
+    height: 80vw;
+    width: 80vh;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+}
+
+.tecla{
+    cursor: pointer;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    font-size: 30pt;
+    box-shadow: 0px 0px 2px 2px rgb(51, 99, 73);
+}
+
+h1{
+    padding: 15px;
+}
+    </style>
+</head>
+
+<h1>CALCULADORA</h1>
+
+<body class="container">
+
+    <div class="display">
+        <div class="input">0</div>
+    </div>
+
+    <div class="teclado">
+    <div class="tecla">7</div>
+    <div class="tecla">8</div>
+    <div class="tecla">9</div>
+    <div class="tecla">/</div>
+    <div class="tecla">4</div>
+    <div class="tecla">5</div>
+    <div class="tecla">6</div>
+    <div class="tecla">+</div>
+    <div class="tecla">1</div>
+    <div class="tecla">2</div>
+    <div class="tecla">3</div>
+    <div class="tecla">-</div>
+    <div class="tecla">.</div>
+    <div class="tecla">0</div>
+    <div class="tecla">*</div>
+    <div class="tecla">=</div>
+</div>
+<script>
+const display = document.querySelector('.input');
+
+const buttons = document.querySelectorAll('.tecla');
+buttons.forEach(button => {
+  button.addEventListener('click', () => {
+    const value = button.innerText;
+    
+    if (!isNaN(value) || value === '.') {
+      display.innerText += value;
+    } else if (value === '=') {
+      const expression = display.innerText;
+      const result = eval(expression);
+      display.innerText = result;
+    } else {
+      display.innerText += ' ' + value + ' ';
+    }
+  });
+});
+
+</script>
+</body>
+</html>

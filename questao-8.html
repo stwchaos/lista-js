@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Conversor de Temperatura</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		body {
+			color: greenyellow;
+			font-family: Arial, sans-serif;
+			background-color: #000000;
+		}
+
+		form {
+			background-color: green;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-top: 25%;
+		}
+
+		label {
+			margin-bottom: 10px;
+			font-size: 150%;
+			font-weight: bold;
+		}
+
+		input {
+			padding: 2%;
+			font-size: 150%;
+			border: none;
+			border-radius: 15%;
+			box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+		}
+
+		.result {
+			margin-top: 20%;
+			font-size: 200%;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+	<form>
+		<label>Temperatura em Celsius:</label>
+		<input type="number" id="celsius" placeholder="Informe a temperatura em Celsius">
+
+		<label>Temperatura em Kelvin:</label>
+		<input type="number" id="kelvin" placeholder="Informe a temperatura em Kelvin">
+
+		<label>Temperatura em Fahrenheit:</label>
+		<input type="number" id="fahrenheit" placeholder="Informe a temperatura em Fahrenheit">
+
+		<div class="result"></div>
+	</form>
+
+	<script type="text/javascript">
+		const celsiusInput = document.getElementById("celsius");
+		const kelvinInput = document.getElementById("kelvin");
+		const fahrenheitInput = document.getElementById("fahrenheit");
+		const resultDiv = document.querySelector(".result");
+
+		function converterTemperatura() {
+			let celsius = celsiusInput.value !== "" ? parseFloat(celsiusInput.value) : null;
+			let kelvin = kelvinInput.value !== "" ? parseFloat(kelvinInput.value) : null;
+			let fahrenheit = fahrenheitInput.value !== "" ? parseFloat(fahrenheitInput.value) : null;
+
+			if (celsius !== null) {
+				kelvin = celsius + 273.15;
+				fahrenheit = celsius * 9 / 5 + 32;
+			} else if (kelvin !== null) {
+				celsius = kelvin - 273.15;
+				fahrenheit = celsius * 9 / 5 + 32;
+			} else if (fahrenheit !== null) {
+				celsius = (fahrenheit - 32) * 5 / 9;
+				kelvin = celsius + 273.15;
+			}
+
+			resultDiv.innerHTML = `Celsius: ${celsius !== null ? celsius.toFixed(2) : ""}ºC<br>Kelvin: ${kelvin !== null ? kelvin.toFixed(2) : ""}K<br>Fahrenheit: ${fahrenheit !== null ? fahrenheit.toFixed(2) : ""}ºF`;
+		}
+
+		celsiusInput.addEventListener("blur", converterTemperatura);
+		kelvinInput.addEventListener("blur", converterTemperatura);
+		fahrenheitInput.addEventListener("blur", converterTemperatura);
+	</script>
+</body>
+</html>

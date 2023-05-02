@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>clica se tu é bom</title>
+  <style>
+    button {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      padding: 16px 32px;
+      font-size: 24px;
+      background-color: #f00;
+      color: #fff;
+      border: none;
+      border-radius: 15%;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <button id="botao">Clique aqui</button>
+
+  <script>
+    const botao = document.querySelector('#botao');
+
+    function mudarPosicao() {
+      const larguraTela = window.innerWidth;
+      const alturaTela = window.innerHeight;
+      const novaPosicaoX = Math.floor(Math.random() * (larguraTela - botao.offsetWidth));
+      const novaPosicaoY = Math.floor(Math.random() * (alturaTela - botao.offsetHeight));
+      botao.style.left = novaPosicaoX + 'px';
+      botao.style.top = novaPosicaoY + 'px';
+    }
+
+    botao.addEventListener('mouseover', mudarPosicao);
+  </script>
+</body>
+</html>

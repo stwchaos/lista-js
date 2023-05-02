@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Botão Centralizado</title>
+	<style>
+		.container {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+
+		img {
+			max-width: 100%;
+			margin-bottom: 24px;
+		}
+
+		button {
+			font-size: 24px;
+			padding: 16px 32px;
+			background-color: rgba(255, 255, 255, 0.5);
+			border-radius: 15%;
+			border: none;
+			box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<img src="questao-5-img.png" alt="Logo">
+		<button onclick="alterarCor()">Alterar cor de fundo</button>
+	</div>
+
+	<script>
+		function alterarCor() {
+			const novaCor = gerarCorAleatoria();
+			document.body.style.backgroundColor = novaCor;
+		}
+
+		function gerarCorAleatoria() {
+			const hexadecimais = "0123456789ABCDEF";
+			let cor = "#";
+			for (let i = 0; i < 6; i++) {
+				cor += hexadecimais[Math.floor(Math.random() * 16)];
+			}
+			return cor;
+		}
+	</script>
+</body>
+</html>

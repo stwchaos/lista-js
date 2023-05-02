@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de itens</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #000000;
+    }
+
+    h1 {
+      color: #2bff00;
+      font-size: 32px;
+      margin-bottom: 24px;
+    }
+
+    input[type="text"] {
+      color: rgb(60, 255, 0);
+      background-color: rgb(34, 34, 34);
+      font-size: 24px;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 5%;
+      margin-right: 8px;
+    }
+
+    button {
+      font-size: 24px;
+      padding: 8px 16px;
+      color: white;
+      background-color: #141414;
+      border-radius: 15%;
+      border: none;
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+    }
+
+    ul {
+      margin-top: 32px;
+      list-style-type: none;
+      padding: 0;
+      width: 80%;
+      max-height: 300px;
+      border-radius: 5px;
+      background-color: #141414;
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    li {
+      color: #2bff00;
+      font-size: 24px;
+      padding: 8px 16px;
+      border-bottom: 1px solid #2bff00;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Adicione um item</h1>
+    <div>
+      <input type="text" id="item-input">
+      <button onclick="adicionarItem()">Adicionar</button>
+    </div>
+    <ul id="item-list"></ul>
+  </div>
+
+  <script>
+    const itemInput = document.querySelector('#item-input');
+    const itemList = document.querySelector('#item-list');
+
+    function adicionarItem() {
+      const novoItem = itemInput.value;
+      if (novoItem) {
+        const itemLi = document.createElement('li');
+        itemLi.textContent = novoItem;
+        itemList.appendChild(itemLi);
+        itemInput.value = '';
+      }
+    }
+  </script>
+</body>
+</html>
